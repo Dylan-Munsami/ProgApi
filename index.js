@@ -46,3 +46,10 @@ app.patch("/orders/:orderId/status", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+// Add this to your index.js - MORE EFFICIENT!
+app.get("/order/:orderId", (req, res) => {
+  const order = orders.find(o => o.id === req.params.orderId);
+  if (!order) return res.status(404).json({ message: "Order not found" });
+  res.json(order);
+});
