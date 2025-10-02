@@ -8,9 +8,9 @@ app.use(express.json());
 // In-memory orders
 let orders = [];
 
-// Root endpoint
+
 app.get("/", (req, res) => {
-  res.json({ message: "Hello from your Render API!" });
+  res.json({ message: "Hello from your Render wjghqefhwefvbv API!" });
 });
 
 // Place a new order
