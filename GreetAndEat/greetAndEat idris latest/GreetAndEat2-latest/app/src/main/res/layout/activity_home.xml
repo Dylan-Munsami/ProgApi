@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Home">
+
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/bgImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg_main"
+        android:scaleType="centerCrop"
+        android:alpha="0.25" />
+
+    <!-- Dark overlay to improve readability -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000" /> <!-- 50% black overlay -->
+
+    <!-- Main Content -->
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="24dp">
+
+        <!-- Page Title -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home Menu"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="48dp"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal" />
+
+        <!-- Buttons Container with transparent dark background -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="#80000000"
+            android:clipToPadding="false"
+            android:clipChildren="false">
+
+            <!-- Main Page Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMain"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginBottom="16dp"
+                android:text="Go to Main Page"
+                android:textSize="18sp"
+                android:padding="16dp"
+                app:cornerRadius="25dp"
+                app:icon="@android:drawable/ic_menu_view"
+                app:iconGravity="textStart"
+                app:iconTint="@android:color/white"
+                android:backgroundTint="@color/primaryColor"
+                android:textColor="@android:color/white"
+                android:elevation="4dp" />
+
+            <!-- Rewards Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRewards"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginBottom="16dp"
+                android:text="Rewards"
+                android:textSize="18sp"
+                android:padding="16dp"
+                app:cornerRadius="25dp"
+                app:strokeWidth="2dp"
+                app:strokeColor="@color/secondaryColor"
+                app:icon="@android:drawable/ic_menu_agenda"
+                app:iconGravity="textStart"
+                app:iconTint="@color/secondaryColor"
+                android:textColor="@color/secondaryColor"
+                android:elevation="2dp" />
+
+            <!-- Settings Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSettings"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginBottom="16dp"
+                android:text="Settings"
+                android:textSize="18sp"
+                android:padding="16dp"
+                app:cornerRadius="25dp"
+                app:icon="@android:drawable/ic_menu_preferences"
+                app:iconGravity="textStart"
+                app:iconTint="@android:color/white"
+                android:backgroundTint="@color/secondaryColor"
+                android:textColor="@android:color/white"
+                android:elevation="4dp" />
+
+            <!-- Tracking Button (solid for visibility) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnTracking"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginBottom="16dp"
+                android:text="Tracking"
+                android:textSize="18sp"
+                android:padding="16dp"
+                app:cornerRadius="25dp"
+                app:icon="@android:drawable/ic_menu_mylocation"
+                app:iconGravity="textStart"
+                app:iconTint="@android:color/white"
+                android:backgroundTint="@color/primaryColor"
+                android:textColor="@android:color/white"
+                android:elevation="4dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>
