@@ -30,7 +30,7 @@ class Home : AppCompatActivity() {
 
         // Navigation
         btnMain.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java)) // When the "Main" button is clicked, navigate to the MainActivity screen
         }
 
         btnRewards.setOnClickListener {
