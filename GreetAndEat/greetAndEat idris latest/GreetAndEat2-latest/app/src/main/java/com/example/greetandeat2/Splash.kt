@@ -35,13 +35,7 @@ class Splash : AppCompatActivity() {
             welcomeText.paint.shader = textShader
         }
 
-        // Fade in logo (no scaling)
-        splashImage.alpha = 0f
-        splashImage.animate()
-            .alpha(1f)
-            .setDuration(1000)
-            .setInterpolator(AccelerateDecelerateInterpolator())
-            .start()
+        
 
         // Fade in welcome text
         welcomeText.alpha = 0f
