@@ -5,6 +5,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 
+// The ApiClient object is a singleton responsible for creating and managing
+// the Retrofit instance used to make API calls in the app.
 object ApiClient {
     private const val BASE_URL = "https://progapi.onrender.com"
 
@@ -18,10 +20,10 @@ object ApiClient {
 
     val service: ApiService by lazy {
         Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(BASE_URL)// Sets the API base URL
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(ApiService::class.java)
+            .create(ApiService::class.java) // Creates an implementation of the ApiService interface
     }
 }
