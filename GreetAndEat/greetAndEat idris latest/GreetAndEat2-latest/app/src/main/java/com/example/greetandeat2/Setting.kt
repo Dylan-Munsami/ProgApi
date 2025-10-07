@@ -1,5 +1,7 @@
 package com.example.greetandeat2
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.activity.enableEdgeToEdge
@@ -8,7 +10,9 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
+
 class Setting : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -21,7 +25,7 @@ class Setting : AppCompatActivity() {
             insets
         }
 
-        // UI Elements
+        // === UI Elements ===
         val editProfileTop = findViewById<TextView>(R.id.editProfile)
         val editProfileButton = findViewById<Button>(R.id.editProfileButton)
         val changePasswordButton = findViewById<Button>(R.id.changePasswordButton)
@@ -30,38 +34,54 @@ class Setting : AppCompatActivity() {
         val themeSwitch = findViewById<Switch>(R.id.themeSwitch)
         val notificationSwitch = findViewById<Switch>(R.id.notificationSwitch)
         val languageSpinner = findViewById<Spinner>(R.id.languageSpinner)
+        val userName = findViewById<TextView>(R.id.userName)
+        val userEmail = findViewById<TextView>(R.id.userEmail)
 
-        // Top Edit Profile TextView
+        // === Load User Info ===
+        val sharedPref = getSharedPreferences("UserSession", Context.MODE_PRIVATE)
+        val name = sharedPref.getString("user_name", "Guest User")
+        val email = sharedPref.getString("user_email", "guest@example.com")
+
+        userName.text = name
+        userEmail.text = email
+
+        // === Edit Profile Button ===
+        editProfileButton.setOnClickListener {
+            Toast.makeText(this, "Edit Profile clicked", Toast.LENGTH_SHORT).show()
+            // Example: Navigate to EditProfileActivity
+            // startActivity(Intent(this, EditProfileActivity::class.java))
+        }
+
         editProfileTop.setOnClickListener {
             Toast.makeText(this, "Edit Profile clicked", Toast.LENGTH_SHORT).show()
-            // TODO: Navigate to Edit Profile Activity
         }
 
-        // Account Section Edit Profile Button
-        editProfileButton.setOnClickListener {
-            Toast.makeText(this, "Edit Profile (Account) clicked", Toast.LENGTH_SHORT).show()
-            // TODO: Navigate to Edit Profile Activity
-        }
-
-        // Change Password Button
+        // === Change Password Button ===
         changePasswordButton.setOnClickListener {
             Toast.makeText(this, "Change Password clicked", Toast.LENGTH_SHORT).show()
-            // TODO: Implement password change logic
         }
 
-        // Payment Methods Button
+        // === Payment Methods ===
         paymentMethodsButton.setOnClickListener {
             Toast.makeText(this, "Manage Payment Methods clicked", Toast.LENGTH_SHORT).show()
-            // TODO: Navigate to Payment Methods Activity
         }
 
-        // Logout Button
+
         logoutButton.setOnClickListener {
-            Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show()
-            // TODO: Implement actual logout logic (e.g., Firebase signOut)
+            val editor = sharedPref.edit()
+            editor.clear()
+            editor.apply()
+
+            Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
+
+
+            val intent = Intent(this, Login::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
         }
 
-        // Theme Switch (Light / Dark)
+        // === Theme Switch ===
         themeSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -70,7 +90,7 @@ class Setting : AppCompatActivity() {
             }
         }
 
-        // Notifications Switch
+
         notificationSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 Toast.makeText(this, "Notifications Enabled", Toast.LENGTH_SHORT).show()
@@ -79,7 +99,7 @@ class Setting : AppCompatActivity() {
             }
         }
 
-        // Language Spinner
+
         languageSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: android.view.View, position: Int, id: Long) {
                 val selected = parent.getItemAtPosition(position).toString()
