@@ -136,7 +136,7 @@
                     android:layout_height="wrap_content"
                     android:entries="@array/languages" />
             </LinearLayout>
-
+//
             <!-- Theme -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -239,7 +239,7 @@
                     android:text="Change Password"
                     android:layout_weight="1"
                     android:textColor="#FFFFFF" />
-
+//change password button implemented 
                 <Button
                     android:id="@+id/changePasswordButton"
                     android:layout_width="wrap_content"
